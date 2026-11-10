@@ -1,0 +1,16 @@
+# dependencies
+node_modules/
+
+# generated learning packages (rebuild with: node rlp/cli.mjs --repo <path>)
+out/
+*.zip
+
+# local run logs
+*.log
+run.err
+
+# editor / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
