@@ -3,7 +3,7 @@
 - package: `D:\codes\r-l-p\out\gemini-cli`
 - source : `D:\codes\gemini-cli`
 - commit : `cd1b45c2db0a5ea7b7fc3b67c1ba5879601d6005`
-- generated: 2026-11-09T16:50:49.494Z
+- generated: 2026-11-10T03:49:31.733Z
 - samples: 600 rows per check (evenly spaced, deterministic)
 
 | check | pass | sample | rate |

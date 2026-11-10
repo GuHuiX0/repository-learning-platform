@@ -4127,6 +4127,44 @@
    * Empty state + shell startup
    * ------------------------------------------------------------------ */
 
+  /** Accept either `window.RLP_DATA = {…};` (data.js) or raw JSON (data.json). */
+  function parsePayloadText(text) {
+    const src = String(text || '').trim();
+    if (!src) return null;
+    let body = src;
+    const m = src.match(/window\.RLP_DATA\s*=\s*/);
+    if (m) body = src.slice(m.index + m[0].length).trim().replace(/;\s*$/, '');
+    try { return JSON.parse(body); } catch (e) { return null; }
+  }
+
+  async function loadPayloadFromFile(file) {
+    if (!file) return false;
+    let text = '';
+    try { text = await file.text(); } catch (e) { toast('cannot read ' + (file.name || 'file')); return false; }
+    const payload = parsePayloadText(text);
+    if (!payload || !payload.meta || !Array.isArray(payload.symbols)) {
+      toast((file.name || 'file') + ': not an RLP payload — expected window.RLP_DATA = {…} or the JSON object');
+      return false;
+    }
+    window.RLP_DATA = payload;
+    const ok = await start();
+    if (ok) toast('payload loaded · ' + (payload.meta.repository || 'repository') + ' @ ' + String(payload.meta.commit || '').slice(0, 8));
+    return ok;
+  }
+
+  function bindDropOnce() {
+    if (typeof document === 'undefined' || window.__rlpDropBound) return;
+    window.__rlpDropBound = true;
+    const stop = (ev) => { if (ev.dataTransfer && ev.dataTransfer.types && ev.dataTransfer.types.indexOf('Files') >= 0) ev.preventDefault(); };
+    document.addEventListener('dragover', stop);
+    document.addEventListener('dragenter', stop);
+    document.addEventListener('drop', (ev) => {
+      if (!ev.dataTransfer || !ev.dataTransfer.files || !ev.dataTransfer.files.length) return;
+      ev.preventDefault();
+      loadPayloadFromFile(ev.dataTransfer.files[0]);
+    });
+  }
+
   function renderEmptyState() {
     const view = document.getElementById('view');
     if (!view) return;
@@ -4134,24 +4172,45 @@
       <div class="empty">
         <h2>No payload found</h2>
         <p>
-          This runtime reads <code>window.RLP_DATA</code>. Nothing was defined, and <code>./data.json</code>
-          could not be fetched (normal under <code>file://</code>).
+          This page needs a payload next to it. It looks for <code>window.RLP_DATA</code>, which
+          <code>data.js</code> defines — and <code>data.js</code> is <strong>not</strong> part of the runtime source,
+          it is written by the analyzer for one specific snapshot.
         </p>
-        <p>
-          The analyzer pipeline writes <code>app/data.js</code> as <code>window.RLP_DATA = { … }</code>. It is regenerated per
-          snapshot and must not be hand-edited; this file deliberately does not create it.
+        <p class="muted">
+          Most common cause: the folder copied here is <code>rlp/app/</code> (runtime source, 3 files) instead of the
+          built package <code>&lt;package&gt;/app/</code> (4 files, includes <code>data.js</code>).
         </p>
+        <div class="panel" style="margin:10px 0">
+          <div class="panel-head"><span class="ph-title">expected in this directory</span></div>
+          <div class="panel-body mono" style="font-size:11px;line-height:1.9">
+            index.html &nbsp;·&nbsp; app.css &nbsp;·&nbsp; app.js &nbsp;·&nbsp; <b>data.js</b> &nbsp;← the payload (≈22 MB)
+          </div>
+        </div>
         <ul>
-          <li>Run the analyzer, then reload this page with <code>data.js</code> next to it.</li>
-          <li>Or launch with <code>?mock=1</code> / press the button below to load the generated fixture (<code>mock-data.js</code>).</li>
-          <li>Or inline the payload in a <code>&lt;script&gt;</code> before <code>app.js</code> — the runtime does not care how it arrives.</li>
+          <li>Copy <code>data.js</code> next to <code>index.html</code> and reload — no server needed (<code>file://</code> is fine).</li>
+          <li>Or drop a payload file onto this window (below): <code>data.js</code> or the same JSON as <code>data.json</code>.</li>
+          <li>Or rebuild it: <code>node rlp/cli.mjs --repo &lt;repo&gt; --out out/&lt;name&gt;</code>.</li>
+          <li>Or inline it: <code>&lt;script&gt;window.RLP_DATA = {…}&lt;/script&gt;</code> before <code>app.js</code>.</li>
         </ul>
         <div class="btnrow">
-          <button class="btn primary" data-act="load-mock">Load mock dataset</button>
+          <label class="btn primary" for="payloadFile">Open payload file…</label>
+          <input id="payloadFile" type="file" accept=".js,.json,application/json,text/javascript" style="display:none">
+          <button class="btn" data-act="load-mock">Load mock dataset</button>
           <button class="btn" data-act="retry">Retry load</button>
         </div>
-        <div class="muted-2 mono" style="font-size:10.5px">expected: ${'window.RLP_DATA = { meta, packages, files, symbols, obligations, … }'}</div>
+        <div class="muted-2 mono" style="font-size:10.5px;margin-top:8px">
+          drag &amp; drop anywhere on this page also works · nothing is uploaded, the file is read locally
+        </div>
       </div>`);
+
+    bindDropOnce();
+
+    on(view, 'change', async (ev) => {
+      const input = ev.target;
+      if (!input || input.id !== 'payloadFile') return;
+      const file = input.files && input.files[0];
+      if (file) await loadPayloadFromFile(file);
+    });
 
     on(view, 'click', async (ev) => {
       const t = ev.target.closest('[data-act]');
@@ -4203,6 +4262,15 @@
     const data = await resolveData();
     if (!data) {
       STORE = null;
+      try {
+        const scripts = Array.from(document.querySelectorAll('script[src]')).map((s) => s.getAttribute('src'));
+        console.error(
+          '[rlp] no payload found.',
+          'window.RLP_DATA =', typeof window.RLP_DATA,
+          '| script tags:', scripts,
+          '| expected next to index.html: app.css, app.js, data.js (data.js is written by the analyzer, not by the runtime)',
+        );
+      } catch (e) { /* ignore */ }
       renderEmptyState();
       return false;
     }

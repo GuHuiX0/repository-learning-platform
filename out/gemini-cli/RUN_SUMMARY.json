@@ -3,7 +3,7 @@
   "repo": "D:\\codes\\gemini-cli",
   "commit": "cd1b45c2db0a5ea7b7fc3b67c1ba5879601d6005",
   "out": "D:\\codes\\r-l-p\\out\\gemini-cli",
-  "zip": null,
+  "zip": "D:\\codes\\r-l-p\\out\\gemini-cli.zip",
   "counts": {
     "packages": 8,
     "files": 2255,
@@ -136,5 +136,5 @@
     "path": 6879,
     "test": 4529
   },
-  "timing_ms": 19709
+  "timing_ms": 16845
 }

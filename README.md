@@ -202,6 +202,22 @@ out/fixture-repo/     扁平单包 fixture（回归用，2 文件）
 > 145MB 的 JSON 资产是为了让每一条结论都能被工具独立复核。只想要浏览器端体验的话，
 > 打开 `out/gemini-cli/app/index.html` 即可，不需要其余目录。
 
+### 打不开 / No payload found
+
+运行时只有 3 个文件（`index.html`、`app.css`、`app.js`），第 4 个 `data.js` 是**分析器写进产物包**的载荷，
+不在源码目录 `rlp/app/` 里。搬机器时最常犯的错就是只复制了源码目录。
+
+```
+rlp/app/                ← 3 个文件，没有 data.js（开发/源码）
+<package>/app/          ← 4 个文件，含 data.js（可直接双击打开）
+```
+
+三种修复方式：
+
+1. 把产物包的 `app/data.js` 放到 `index.html` 旁边，刷新即可（`file://` 也支持，不需要服务器）；
+2. 打开页面后点 **Open payload file…** 选 `data.js`，或直接把文件拖进窗口——本地读取，不上传；
+3. 重新生成：`node rlp/cli.mjs --repo <repo> --out out/<name>`。
+
 ## License
 
 MIT — see [LICENSE](LICENSE).

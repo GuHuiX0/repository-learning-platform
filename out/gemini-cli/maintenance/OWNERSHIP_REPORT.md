@@ -2,7 +2,7 @@
 
 - repository: `google-gemini/gemini-cli`
 - commit: `cd1b45c2db0a5ea7b7fc3b67c1ba5879601d6005`
-- generated: 2026-11-10T02:10:18.778Z
+- generated: 2026-11-10T03:49:31.653Z
 
 > This report states what the package can prove about this snapshot. It cannot prove that a developer can maintain the code; that requires the learner evidence produced inside the runtime (exercises, diagnoses, patches).
 
