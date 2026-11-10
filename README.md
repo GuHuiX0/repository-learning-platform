@@ -181,3 +181,7 @@ node rlp/validate.mjs out\gemini-cli D:\codes\gemini-cli 600
 4. 兜底：已导出、fan-in 为 0 的可调用符号；再兜底：所有模块级作用域。
 
 找不到入口时不会静默降级成"0% 覆盖"，而是记录 `reachability unproven`。对没有 `packages/` 目录的扁平仓库，第 2–4 条保证仍能产出有意义的覆盖。
+
+## License
+
+MIT — see [LICENSE](LICENSE).

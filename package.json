@@ -4,13 +4,32 @@
   "private": true,
   "description": "Coverage-driven repository learning platform: turns a versioned repository snapshot into an auditable, interactive, source-grounded knowledge system (knowledge graph, coverage obligations, deterministic path suite, curriculum, maintenance lab).",
   "type": "commonjs",
-  "engines": { "node": ">=20" },
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "analyze": "node rlp/cli.mjs",
     "validate": "node rlp/validate.mjs",
     "selftest": "node rlp/app/_selftest.mjs"
   },
-  "keywords": ["code-analysis", "coverage", "onboarding", "maintenance", "typescript", "material-design-3"],
-  "license": "UNLICENSED",
-  "dependencies": { "typescript": "^5.6.3" }
+  "keywords": [
+    "code-analysis",
+    "coverage",
+    "onboarding",
+    "maintenance",
+    "typescript",
+    "material-design-3"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "typescript": "^5.6.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GuHuiX0/repository-learning-platform.git"
+  },
+  "homepage": "https://github.com/GuHuiX0/repository-learning-platform#readme",
+  "bugs": {
+    "url": "https://github.com/GuHuiX0/repository-learning-platform/issues"
+  }
 }
