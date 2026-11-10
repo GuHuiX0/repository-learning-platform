@@ -1,0 +1,113 @@
+{
+  "repository": "google-gemini/gemini-cli",
+  "commit": "cd1b45c2db0a5ea7b7fc3b67c1ba5879601d6005",
+  "generated_at": "2026-11-10T02:10:18.778Z",
+  "modules": [
+    {
+      "pkg": "@google/gemini-cli",
+      "total": 153064,
+      "covered": 7997,
+      "uncovered": 9459,
+      "unknown": 77445,
+      "excluded": 58163,
+      "critical_open": 7247,
+      "coverage_pct": 8.4,
+      "tasks": 84,
+      "verdict": "not yet learnable from this package"
+    },
+    {
+      "pkg": "@google/gemini-cli-core",
+      "total": 115548,
+      "covered": 16914,
+      "uncovered": 20196,
+      "unknown": 26208,
+      "excluded": 52230,
+      "critical_open": 7501,
+      "coverage_pct": 26.7,
+      "tasks": 41,
+      "verdict": "partially learnable — critical gaps remain"
+    },
+    {
+      "pkg": "(root)",
+      "total": 14954,
+      "covered": 279,
+      "uncovered": 311,
+      "unknown": 7980,
+      "excluded": 6384,
+      "critical_open": 1105,
+      "coverage_pct": 3.3,
+      "tasks": 0,
+      "verdict": "not yet learnable from this package"
+    },
+    {
+      "pkg": "@google/gemini-cli-a2a-server",
+      "total": 4595,
+      "covered": 121,
+      "uncovered": 227,
+      "unknown": 2438,
+      "excluded": 1809,
+      "critical_open": 430,
+      "coverage_pct": 4.3,
+      "tasks": 7,
+      "verdict": "not yet learnable from this package"
+    },
+    {
+      "pkg": "gemini-cli-vscode-ide-companion",
+      "total": 1631,
+      "covered": 20,
+      "uncovered": 7,
+      "unknown": 947,
+      "excluded": 657,
+      "critical_open": 61,
+      "coverage_pct": 2.1,
+      "tasks": 0,
+      "verdict": "not yet learnable from this package"
+    },
+    {
+      "pkg": "@google/gemini-cli-devtools",
+      "total": 1230,
+      "covered": 0,
+      "uncovered": 0,
+      "unknown": 1230,
+      "excluded": 0,
+      "critical_open": 41,
+      "coverage_pct": 0,
+      "tasks": 0,
+      "verdict": "not yet learnable from this package"
+    },
+    {
+      "pkg": "@google/gemini-cli-test-utils",
+      "total": 1142,
+      "covered": 0,
+      "uncovered": 0,
+      "unknown": 0,
+      "excluded": 1142,
+      "critical_open": 144,
+      "coverage_pct": 0,
+      "tasks": 0,
+      "verdict": "not yet learnable from this package"
+    },
+    {
+      "pkg": "@google/gemini-cli-sdk",
+      "total": 683,
+      "covered": 4,
+      "uncovered": 2,
+      "unknown": 235,
+      "excluded": 442,
+      "critical_open": 76,
+      "coverage_pct": 1.7,
+      "tasks": 0,
+      "verdict": "not yet learnable from this package"
+    }
+  ],
+  "totals": {
+    "obligations": 292847,
+    "covered": 25335,
+    "paths": 1500,
+    "exercises": 69,
+    "storylines": 28,
+    "maintenance_tasks": 32,
+    "open_critical_gaps": 4119
+  },
+  "statement": "This report states what the package can prove about this snapshot. It cannot prove that a developer can maintain the code; that requires the learner evidence produced inside the runtime (exercises, diagnoses, patches)."
+}

@@ -1,0 +1,73 @@
+{
+  "manifest": {
+    "commit": "cd1b45c2db0a5ea7b7fc3b67c1ba5879601d6005",
+    "counts": {
+      "packages": 8,
+      "files": 2255,
+      "test_files": 1080,
+      "symbols": 57104,
+      "symbols_non_test": 18981,
+      "call_edges": 76706,
+      "may_reach_edges": 1663,
+      "obligations": 292847,
+      "obligations_covered": 25335,
+      "obligations_uncovered": 30202,
+      "obligations_unknown": 116483,
+      "obligations_excluded": 120827,
+      "paths": 1500,
+      "storylines": 28,
+      "exercises": 69,
+      "maintenance_tasks": 32
+    }
+  },
+  "results": [
+    {
+      "name": "symbol anchor resolvable in source file",
+      "ok": 600,
+      "total": 600,
+      "pass": 600,
+      "rate": 100,
+      "failSamples": []
+    },
+    {
+      "name": "branch obligation label traceable to source text",
+      "ok": 600,
+      "total": 600,
+      "pass": 600,
+      "rate": 100,
+      "failSamples": []
+    },
+    {
+      "name": "call edge: callee appears in caller source",
+      "ok": 600,
+      "total": 600,
+      "pass": 600,
+      "rate": 100,
+      "failSamples": []
+    },
+    {
+      "name": "path witness: steps and chain edges exist",
+      "ok": 120,
+      "total": 120,
+      "pass": 120,
+      "rate": 100,
+      "failSamples": []
+    },
+    {
+      "name": "obligation counts reconcile with manifest",
+      "ok": 1,
+      "total": 1,
+      "pass": 1,
+      "rate": 100,
+      "failSamples": []
+    },
+    {
+      "name": "symbol ids are deterministic hashes of (file, qualified)",
+      "ok": 200,
+      "total": 200,
+      "pass": 200,
+      "rate": 100,
+      "failSamples": []
+    }
+  ]
+}

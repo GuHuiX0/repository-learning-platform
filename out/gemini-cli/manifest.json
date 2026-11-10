@@ -1,0 +1,343 @@
+{
+  "schema": "repository-learning-package/v0.1",
+  "repository": "google-gemini/gemini-cli",
+  "commit": "cd1b45c2db0a5ea7b7fc3b67c1ba5879601d6005",
+  "branch": "main",
+  "snapshot_hash": "5a290b8031058474",
+  "analysis_version": "rlp-0.1.0",
+  "generated_at": "2026-11-10T02:10:18.859Z",
+  "input": {
+    "type": "git-snapshot",
+    "commit": "cd1b45c2db0a5ea7b7fc3b67c1ba5879601d6005",
+    "files": 2255,
+    "language": "typescript"
+  },
+  "counts": {
+    "packages": 8,
+    "files": 2255,
+    "test_files": 1080,
+    "symbols": 57104,
+    "symbols_non_test": 18981,
+    "call_edges": 76706,
+    "may_reach_edges": 1663,
+    "obligations": 292847,
+    "obligations_covered": 25335,
+    "obligations_uncovered": 30202,
+    "obligations_unknown": 116483,
+    "obligations_excluded": 120827,
+    "paths": 1500,
+    "storylines": 28,
+    "exercises": 69,
+    "maintenance_tasks": 32
+  },
+  "coverage": {
+    "symbol": {
+      "total": 16469,
+      "covered": 4279,
+      "uncovered": 0,
+      "unknown": 12190,
+      "excluded": 0,
+      "infeasible": 0,
+      "denominator": 16469,
+      "pct": 26
+    },
+    "call-edge": {
+      "total": 76706,
+      "covered": 7896,
+      "uncovered": 0,
+      "unknown": 13974,
+      "excluded": 54836,
+      "infeasible": 0,
+      "denominator": 21870,
+      "pct": 36.1
+    },
+    "branch": {
+      "total": 91087,
+      "covered": 4680,
+      "uncovered": 20581,
+      "unknown": 52060,
+      "excluded": 13766,
+      "infeasible": 0,
+      "denominator": 77321,
+      "pct": 6.1
+    },
+    "scenario": {
+      "total": 13961,
+      "covered": 1335,
+      "uncovered": 3366,
+      "unknown": 9260,
+      "excluded": 0,
+      "infeasible": 0,
+      "denominator": 13961,
+      "pct": 9.6
+    },
+    "e2e-path": {
+      "total": 54391,
+      "covered": 4279,
+      "uncovered": 0,
+      "unknown": 12190,
+      "excluded": 37922,
+      "infeasible": 0,
+      "denominator": 16469,
+      "pct": 26
+    },
+    "exception": {
+      "total": 1936,
+      "covered": 527,
+      "uncovered": 296,
+      "unknown": 923,
+      "excluded": 190,
+      "infeasible": 0,
+      "denominator": 1746,
+      "pct": 30.2
+    },
+    "loop": {
+      "total": 5252,
+      "covered": 597,
+      "uncovered": 1037,
+      "unknown": 2144,
+      "excluded": 1474,
+      "infeasible": 0,
+      "denominator": 3778,
+      "pct": 15.8
+    },
+    "return": {
+      "total": 31424,
+      "covered": 1581,
+      "uncovered": 4552,
+      "unknown": 13295,
+      "excluded": 11996,
+      "infeasible": 0,
+      "denominator": 19428,
+      "pct": 8.1
+    },
+    "throw": {
+      "total": 1621,
+      "covered": 161,
+      "uncovered": 370,
+      "unknown": 447,
+      "excluded": 643,
+      "infeasible": 0,
+      "denominator": 978,
+      "pct": 16.5
+    }
+  },
+  "layers": {
+    "structural": {
+      "total": 147566,
+      "denominator": 54808,
+      "covered": 16454,
+      "pct": 30
+    },
+    "directional": {
+      "total": 145281,
+      "denominator": 117212,
+      "covered": 8881,
+      "open": 30202,
+      "pct": 7.6
+    }
+  },
+  "unknown_ratio": 67.7,
+  "critical_gaps": 4119,
+  "encoding": {
+    "analysis/symbol-index.json": "rows follow schema[]",
+    "analysis/call-graph.json": "rows = [from, to, kind, weight]",
+    "analysis/control-flow-graph.json": "cfg[symbolId] = {n: [nodeId, kind, label, anchor?], e: [from, to, kind]}",
+    "analysis/source-evidence.json": "rows follow schema[]",
+    "coverage/coverage-obligations.json": "rows follow schema[]; evidence = symbol evidence id + node id",
+    "coverage/branch-coverage.json": "rows follow schema[]",
+    "coverage/scenario-matrix.json": "rows = [symbol, callee, category, call_site, [[outcome, status, witness]]]",
+    "coverage/coverage-gaps.json": "gaps = [id, kind, symbol, file, type, criticality, text, reason]"
+  },
+  "artifacts": [
+    {
+      "path": "analysis/repository-index.json",
+      "bytes": 322949,
+      "rows": 2255
+    },
+    {
+      "path": "analysis/symbol-index.json",
+      "bytes": 13168428,
+      "rows": 57104
+    },
+    {
+      "path": "analysis/call-graph.json",
+      "bytes": 3453191,
+      "rows": 76706
+    },
+    {
+      "path": "analysis/control-flow-graph.json",
+      "bytes": 16630523,
+      "rows": 2
+    },
+    {
+      "path": "analysis/data-flow-graph.json",
+      "bytes": 328352,
+      "rows": 2
+    },
+    {
+      "path": "analysis/dependency-graph.json",
+      "bytes": 1170857,
+      "rows": 2
+    },
+    {
+      "path": "analysis/source-evidence.json",
+      "bytes": 3267331,
+      "rows": 18981
+    },
+    {
+      "path": "coverage/coverage-obligations.json",
+      "bytes": 36861478,
+      "rows": 292847
+    },
+    {
+      "path": "coverage/branch-coverage.json",
+      "bytes": 969336,
+      "rows": 11622
+    },
+    {
+      "path": "coverage/scenario-matrix.json",
+      "bytes": 1222607,
+      "rows": 7877
+    },
+    {
+      "path": "coverage/path-coverage.json",
+      "bytes": 93116,
+      "rows": 3
+    },
+    {
+      "path": "coverage/coverage-gaps.json",
+      "bytes": 43539873,
+      "rows": 4
+    },
+    {
+      "path": "learning/path-suite.json",
+      "bytes": 4812484,
+      "rows": 1500
+    },
+    {
+      "path": "learning/storylines.json",
+      "bytes": 116026,
+      "rows": 28
+    },
+    {
+      "path": "learning/learning-objectives.json",
+      "bytes": 43776,
+      "rows": 32
+    },
+    {
+      "path": "learning/exercises.json",
+      "bytes": 56950,
+      "rows": 69
+    },
+    {
+      "path": "learning/assessments.json",
+      "bytes": 2571,
+      "rows": 5
+    },
+    {
+      "path": "maintenance/impact-map.json",
+      "bytes": 538728,
+      "rows": 600
+    },
+    {
+      "path": "maintenance/maintenance-tasks.json",
+      "bytes": 34387,
+      "rows": 32
+    },
+    {
+      "path": "maintenance/testing-recommendations.json",
+      "bytes": 123466,
+      "rows": 400
+    },
+    {
+      "path": "maintenance/ownership-report.json",
+      "bytes": 2952,
+      "rows": 6
+    },
+    {
+      "path": "maintenance/OWNERSHIP_REPORT.md",
+      "bytes": 6271,
+      "rows": 8
+    },
+    {
+      "path": "app/data.js",
+      "bytes": 22818957,
+      "rows": 18981
+    },
+    {
+      "path": "app/index.html",
+      "bytes": 2672,
+      "rows": 0
+    },
+    {
+      "path": "app/app.js",
+      "bytes": 176708,
+      "rows": 0
+    },
+    {
+      "path": "app/app.css",
+      "bytes": 61891,
+      "rows": 0
+    }
+  ],
+  "status": {
+    "analysis/repository-index.json": "ok",
+    "analysis/symbol-index.json": "ok",
+    "analysis/call-graph.json": "ok",
+    "analysis/control-flow-graph.json": "ok",
+    "analysis/data-flow-graph.json": "ok",
+    "analysis/dependency-graph.json": "ok",
+    "analysis/source-evidence.json": "ok",
+    "coverage/coverage-obligations.json": "ok",
+    "coverage/branch-coverage.json": "ok",
+    "coverage/scenario-matrix.json": "ok",
+    "coverage/path-coverage.json": "ok",
+    "coverage/coverage-gaps.json": "ok",
+    "learning/path-suite.json": "ok",
+    "learning/storylines.json": "ok",
+    "learning/learning-objectives.json": "ok",
+    "learning/exercises.json": "ok",
+    "learning/assessments.json": "ok",
+    "maintenance/impact-map.json": "ok",
+    "maintenance/maintenance-tasks.json": "ok",
+    "maintenance/testing-recommendations.json": "ok",
+    "maintenance/ownership-report.json": "ok",
+    "maintenance/OWNERSHIP_REPORT.md": "ok",
+    "app/data.js": "ok",
+    "app/index.html": "ok",
+    "app/app.js": "ok",
+    "app/app.css": "ok"
+  },
+  "write_ms": {
+    "analysis/repository-index.json": 2,
+    "analysis/symbol-index.json": 118,
+    "analysis/call-graph.json": 19,
+    "analysis/control-flow-graph.json": 197,
+    "analysis/data-flow-graph.json": 5,
+    "analysis/dependency-graph.json": 7,
+    "analysis/source-evidence.json": 28,
+    "coverage/coverage-obligations.json": 679,
+    "coverage/branch-coverage.json": 9,
+    "coverage/scenario-matrix.json": 13,
+    "coverage/path-coverage.json": 1,
+    "coverage/coverage-gaps.json": 718,
+    "learning/path-suite.json": 81,
+    "learning/storylines.json": 2,
+    "learning/learning-objectives.json": 1,
+    "learning/exercises.json": 1,
+    "learning/assessments.json": 1,
+    "maintenance/impact-map.json": 8,
+    "maintenance/maintenance-tasks.json": 1,
+    "maintenance/testing-recommendations.json": 2,
+    "maintenance/ownership-report.json": 1,
+    "app/data.js": 1643
+  },
+  "limits": [
+    "Static analysis only: the analysed repository is never executed.",
+    "Dynamic dispatch, reflection, runtime registration and string-keyed lookups remain Unknown with reasons.",
+    "Loop/recursion coverage is abstracted (zero-iteration / iterate); unbounded path coverage is not claimed.",
+    "May-reach edges come from Rapid Type Analysis; paths depending on them are labelled may-reach.",
+    "app/data.js carries a prioritised slice of obligations plus exact per-file aggregates; the complete set is coverage/coverage-obligations.json."
+  ]
+}

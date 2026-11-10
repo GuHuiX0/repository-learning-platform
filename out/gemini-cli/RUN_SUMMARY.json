@@ -1,0 +1,140 @@
+{
+  "units": "percent (0..100); app/data.js uses 0..1",
+  "repo": "D:\\codes\\gemini-cli",
+  "commit": "cd1b45c2db0a5ea7b7fc3b67c1ba5879601d6005",
+  "out": "D:\\codes\\r-l-p\\out\\gemini-cli",
+  "zip": null,
+  "counts": {
+    "packages": 8,
+    "files": 2255,
+    "test_files": 1080,
+    "symbols": 57104,
+    "symbols_non_test": 18981,
+    "call_edges": 76706,
+    "may_reach_edges": 1663,
+    "obligations": 292847,
+    "obligations_covered": 25335,
+    "obligations_uncovered": 30202,
+    "obligations_unknown": 116483,
+    "obligations_excluded": 120827,
+    "paths": 1500,
+    "storylines": 28,
+    "exercises": 69,
+    "maintenance_tasks": 32
+  },
+  "layers": {
+    "structural": {
+      "total": 147566,
+      "denominator": 54808,
+      "covered": 16454,
+      "pct": 30
+    },
+    "directional": {
+      "total": 145281,
+      "denominator": 117212,
+      "covered": 8881,
+      "open": 30202,
+      "pct": 7.6
+    }
+  },
+  "coverage": {
+    "symbol": {
+      "total": 16469,
+      "covered": 4279,
+      "uncovered": 0,
+      "unknown": 12190,
+      "excluded": 0,
+      "infeasible": 0,
+      "denominator": 16469,
+      "pct": 26
+    },
+    "call-edge": {
+      "total": 76706,
+      "covered": 7896,
+      "uncovered": 0,
+      "unknown": 13974,
+      "excluded": 54836,
+      "infeasible": 0,
+      "denominator": 21870,
+      "pct": 36.1
+    },
+    "branch": {
+      "total": 91087,
+      "covered": 4680,
+      "uncovered": 20581,
+      "unknown": 52060,
+      "excluded": 13766,
+      "infeasible": 0,
+      "denominator": 77321,
+      "pct": 6.1
+    },
+    "scenario": {
+      "total": 13961,
+      "covered": 1335,
+      "uncovered": 3366,
+      "unknown": 9260,
+      "excluded": 0,
+      "infeasible": 0,
+      "denominator": 13961,
+      "pct": 9.6
+    },
+    "e2e-path": {
+      "total": 54391,
+      "covered": 4279,
+      "uncovered": 0,
+      "unknown": 12190,
+      "excluded": 37922,
+      "infeasible": 0,
+      "denominator": 16469,
+      "pct": 26
+    },
+    "exception": {
+      "total": 1936,
+      "covered": 527,
+      "uncovered": 296,
+      "unknown": 923,
+      "excluded": 190,
+      "infeasible": 0,
+      "denominator": 1746,
+      "pct": 30.2
+    },
+    "loop": {
+      "total": 5252,
+      "covered": 597,
+      "uncovered": 1037,
+      "unknown": 2144,
+      "excluded": 1474,
+      "infeasible": 0,
+      "denominator": 3778,
+      "pct": 15.8
+    },
+    "return": {
+      "total": 31424,
+      "covered": 1581,
+      "uncovered": 4552,
+      "unknown": 13295,
+      "excluded": 11996,
+      "infeasible": 0,
+      "denominator": 19428,
+      "pct": 8.1
+    },
+    "throw": {
+      "total": 1621,
+      "covered": 161,
+      "uncovered": 370,
+      "unknown": 447,
+      "excluded": 643,
+      "infeasible": 0,
+      "denominator": 978,
+      "pct": 16.5
+    }
+  },
+  "unknown_ratio": 67.7,
+  "critical_gaps": 4119,
+  "evidence_kinds": {
+    "chain": 13927,
+    "path": 6879,
+    "test": 4529
+  },
+  "timing_ms": 19709
+}

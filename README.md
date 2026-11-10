@@ -182,6 +182,26 @@ node rlp/validate.mjs out\gemini-cli D:\codes\gemini-cli 600
 
 找不到入口时不会静默降级成"0% 覆盖"，而是记录 `reachability unproven`。对没有 `packages/` 目录的扁平仓库，第 2–4 条保证仍能产出有意义的覆盖。
 
+## 示例产物（out/）
+
+仓库里提交了一份**完整示例包**，用于对照实现与结果：
+
+```
+out/gemini-cli/       一个完整的 Repository Learning Package（145MB / 49 文件）
+out/validation/       源码回溯验证结果（VALIDATION.md + .json）
+out/shots/            7 个工作区截图
+out/fixture-repo/     扁平单包 fixture（回归用，2 文件）
+```
+
+它由 `node rlp/cli.mjs --repo google-gemini/gemini-cli@cd1b45c2 --max-paths 1500` 生成：
+2255 文件 / 57104 符号 / 76706 调用边 / 292847 覆盖义务 / 1500 条路径。
+被分析仓库是 **Apache-2.0** 许可的第三方项目，包内只保留符号名、路径、
+声明锚点与分支条件文本作为证据指针，不复制源码文件——见
+[`out/gemini-cli/ATTRIBUTION.md`](out/gemini-cli/ATTRIBUTION.md)。
+
+> 145MB 的 JSON 资产是为了让每一条结论都能被工具独立复核。只想要浏览器端体验的话，
+> 打开 `out/gemini-cli/app/index.html` 即可，不需要其余目录。
+
 ## License
 
 MIT — see [LICENSE](LICENSE).

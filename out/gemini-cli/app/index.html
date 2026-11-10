@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark light">
+<meta name="theme-color" content="#101418" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f8f9ff" media="(prefers-color-scheme: light)">
+<meta name="description" content="Coverage-driven repository learning package: navigation, coverage atlas, execution debugger and maintenance lab for one pinned commit.">
+<title>RLP · Repository Learning Platform</title>
+<!--
+  Static shell. No modules, no CDN, no network, no build step.
+  Works from file:// as long as data.js (or an inline payload) is present.
+
+  The pipeline owns data.js and regenerates it: it must only ever contain
+  `window.RLP_DATA = { ... }` (see CONTRACT.md). This file loads it first,
+  then app.js. If an analyzer prefers to inline the payload instead, put that
+  inline script where the data.js tag is — app.js reads window.RLP_DATA and
+  does not care how it was produced.
+-->
+<!-- Material Design 3. System font stack: Roboto when installed, otherwise the platform UI font. No webfont is fetched (the app must work offline from file://). -->
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<a class="skip-link" href="#view">Skip to workspace</a>
+
+<div id="app" class="app">
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span class="brand-txt">
+        <span class="brand-name" id="brandName">Repository Learning</span>
+        <span class="brand-sub" id="brandSub">loading payload…</span>
+      </span>
+    </div>
+    <div class="searchhost" id="searchHost"></div>
+    <div class="topcounts" id="topCounts" aria-label="Payload counts"></div>
+    <button class="btn ghost iconbtn" id="themeToggle" type="button" aria-label="Switch colour theme" title="Switch light / dark (Material 3)" data-tooltip="Toggle M3 theme">◐</button>
+  </header>
+
+  <nav class="navstrip" id="tabs" aria-label="Workspaces"></nav>
+
+  <main id="view" class="view" tabindex="-1"></main>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+<script src="data.js"></script>
+<!--
+  Inline-payload variant (for analyzers that prefer embedding over a separate file):
+
+    <script>window.RLP_DATA = { meta: {...}, symbols: [...], ... };</script>
+
+  Replace the data.js tag above with that inline script; app.js reads
+  window.RLP_DATA and does not care how it was produced. Never hand-edit
+  data.js — the pipeline regenerates it per snapshot.
+-->
+<script src="app.js"></script>
+</body>
+</html>

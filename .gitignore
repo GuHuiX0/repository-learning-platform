@@ -1,8 +1,15 @@
-# dependencies
+﻿# dependencies
 node_modules/
 
-# generated learning packages (rebuild with: node rlp/cli.mjs --repo <path>)
-out/
+# generated learning packages are committed as examples (out/gemini-cli, out/validation,
+# out/shots, out/fixture-repo); everything else under out/ stays local
+out/*
+!out/gemini-cli/
+!out/validation/
+!out/shots/
+!out/fixture-repo/
+
+# archives are not stored in git
 *.zip
 
 # local run logs
