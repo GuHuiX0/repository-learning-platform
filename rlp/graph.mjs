@@ -358,10 +358,52 @@ export function buildModel(files, repoMeta) {
     if (byRel.has(f)) binFiles.add(f);
   }
 
+  // Single-package repositories: the root package.json carries the binary/main,
+  // and there is no `packages/` tree to scan. Fall back to it, then to
+  // conventional entry filenames, so a flat repo is not reported as 100% unknown.
+  {
+    let rootPkg = null;
+    try {
+      const raw = fs.readFileSync(path.join(repoMeta.repoRoot, 'package.json'), 'utf8');
+      rootPkg = JSON.parse(raw);
+    } catch { rootPkg = null; }
+    const pushRoot = (target) => {
+      const clean = String(target).replace(/^\.\//, '');
+      const cands = [clean, clean.replace(/\.js$/, '.ts'), clean.replace(/\.js$/, '.tsx'), clean.replace(/^dist\//, 'src/').replace(/\.js$/, '.ts')];
+      for (const c of cands) if (byRel.has(c)) binFiles.add(c);
+    };
+    if (rootPkg) {
+      if (typeof rootPkg.bin === 'string') pushRoot(rootPkg.bin);
+      else if (rootPkg.bin && typeof rootPkg.bin === 'object') Object.values(rootPkg.bin).forEach(pushRoot);
+      if (typeof rootPkg.main === 'string') pushRoot(rootPkg.main);
+      const walkExports = (v) => {
+        if (typeof v === 'string') pushRoot(v);
+        else if (v && typeof v === 'object') for (const x of Object.values(v)) walkExports(x);
+      };
+      if (rootPkg.exports) walkExports(rootPkg.exports);
+    }
+    for (const f of ['index.ts', 'src/index.ts', 'src/main.ts', 'src/cli.ts', 'src/app.ts', 'main.ts']) {
+      if (byRel.has(f)) binFiles.add(f);
+    }
+  }
+
   const entrySymbols = new Set();
   for (const sym of symbols) {
     if (sym.isTest) continue;
     if (binFiles.has(sym.rel)) entrySymbols.add(sym.id);
+  }
+  if (entrySymbols.size === 0) {
+    // Last resort for unusual layouts: exported, never-called, callable symbols
+    // are the process surface as far as static analysis can tell.
+    for (const sym of symbols) {
+      if (sym.isTest || !sym.exported) continue;
+      if (!['function', 'arrow', 'class', 'method'].includes(sym.kind)) continue;
+      if (sym.fanIn > 0) continue;
+      entrySymbols.add(sym.id);
+    }
+  }
+  if (entrySymbols.size === 0) {
+    for (const sym of symbols) if (!sym.isTest && sym.kind === 'module') entrySymbols.add(sym.id);
   }
 
   /* ---- may-reach (RTA): instantiating a class makes its methods reachable ----

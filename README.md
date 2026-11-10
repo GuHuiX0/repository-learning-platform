@@ -170,3 +170,14 @@ node rlp/validate.mjs out\gemini-cli D:\codes\gemini-cli 600
 4. `may-reach` 边来自 RTA，是保守过近似，路径会明确标注。
 5. 浏览器载荷是**优先切片 + 精确的每文件聚合**；完整义务集合在 `coverage/coverage-obligations.json`。
 6. 路径套件有预算；预算外的方向义务保持 `uncovered` 并说明原因，不做四舍五入。
+
+## 7. 入口识别（决定"可达性"上限）
+
+按顺序尝试，命中即用：
+
+1. `packages/<pkg>/package.json` 的 `bin` / `main` / `exports`（monorepo）；
+2. 仓库根 `package.json` 的 `bin` / `main` / `exports`（单包仓库）；
+3. 约定入口文件名：`index.ts`、`src/index.ts`、`src/main.ts`、`src/cli.ts`、`src/app.ts`、`main.ts`；
+4. 兜底：已导出、fan-in 为 0 的可调用符号；再兜底：所有模块级作用域。
+
+找不到入口时不会静默降级成"0% 覆盖"，而是记录 `reachability unproven`。对没有 `packages/` 目录的扁平仓库，第 2–4 条保证仍能产出有意义的覆盖。
